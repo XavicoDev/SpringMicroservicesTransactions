@@ -1,15 +1,14 @@
 package com.microservice.customer.dto;
 
 import jakarta.persistence.MappedSuperclass;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-//@Data
-//@NoArgsConstructor
-//@AllArgsConstructor
 @MappedSuperclass
-public class Person {
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class Person extends Base {
     private String name;
     private String gender;
     private int age;
