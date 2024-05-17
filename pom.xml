@@ -10,7 +10,7 @@
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
 
-  <groupId>com.mycompany.app</groupId>
+  <groupId>com.xavicodev.app</groupId>
   <artifactId>SpringMicroservicesTransactions</artifactId>
   <version>1.0-SNAPSHOT</version>
 
@@ -21,6 +21,7 @@
     <module>microservice-gateway</module>
     <module>microservice-eureka</module>
     <module>microservice-config</module>
+    <module>microservice-customer</module>
   </modules>
 
   <properties>
