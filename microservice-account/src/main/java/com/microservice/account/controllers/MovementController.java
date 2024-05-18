@@ -1,6 +1,7 @@
 package com.microservice.account.controllers;
 
 import com.microservice.account.controllers.base.BaseControllerImpl;
+import com.microservice.account.dto.projections.MovementPrj;
 import com.microservice.account.entities.Account;
 import com.microservice.account.entities.Movement;
 import com.microservice.account.services.AccountService;
@@ -10,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -62,5 +65,11 @@ public class MovementController extends BaseControllerImpl<Movement, MovementSer
         } catch (Exception e) {
             return new ResponseEntity<>("Registro fallido: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @GetMapping("/consulta/proyectada")
+    public ResponseEntity<List<MovementPrj>> getAllMovementsProjected() {
+        List<MovementPrj> projectedMovements = movementService.findAllProjectedBy();
+        return new ResponseEntity<>(projectedMovements, HttpStatus.OK);
     }
 }
