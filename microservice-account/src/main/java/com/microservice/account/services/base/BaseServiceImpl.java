@@ -2,6 +2,7 @@ package com.microservice.account.services.base;
 
 import com.microservice.account.dto.Base;
 import com.microservice.account.repositories.base.BaseRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.util.List;
@@ -21,6 +22,7 @@ public abstract class BaseServiceImpl<E extends Base, ID extends Serializable> i
     }
 
     @Override
+    //@Transactional
     public E finById(ID id) throws Exception {
         Optional<E> entity=baseRepository.findById(id);
         return entity.get();
@@ -33,6 +35,7 @@ public abstract class BaseServiceImpl<E extends Base, ID extends Serializable> i
     }
 
     @Override
+    //@Transactional
     public E update(ID id, E entity) throws Exception {
         Optional<E> entityOptional=baseRepository.findById(id);
         E entityUpdate=entityOptional.get();

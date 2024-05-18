@@ -1,0 +1,28 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: ms-gateway
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: true
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: customer
+          uri: lb://MS-CUSTOMER
+          predicates:
+            - Path=/api/v1/clientes/**
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG

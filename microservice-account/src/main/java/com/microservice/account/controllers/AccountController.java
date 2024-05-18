@@ -19,7 +19,6 @@ public class AccountController extends BaseControllerImpl<Account, AccountServic
     @Autowired
     private AccountService accountService;
 
-
     @PostMapping("/crear/validando")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<?> save(@RequestBody Account entity) {

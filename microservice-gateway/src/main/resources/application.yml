@@ -1,25 +1,5 @@
-server:
-  port: 8090
 spring:
   application:
-    name: microservice-gateway
+    name: ms-gateway
   config:
     import: optional:configserver:http://localhost:8888
-  cloud:
-    gateway:
-      discovery:
-        locator:
-          enable: true
-      routes:
-        - id: customer
-          uri: http://127.0.0.1:8091
-          predicate:
-            - Path=/api/v1/clientes/**
-        - id: account
-          uri: http://127.0.0.1:8092
-          predicate:
-            - Path=/api/v1/cuentas/**
-        - id: movement
-          uri: http://127.0.0.1:8092
-          predicate:
-            - Path=/api/v1/movimientos/**
