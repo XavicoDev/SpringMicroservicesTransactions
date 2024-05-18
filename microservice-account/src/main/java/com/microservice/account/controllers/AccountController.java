@@ -20,13 +20,10 @@ public class AccountController extends BaseControllerImpl<Account, AccountServic
     private AccountService accountService;
 
 
-
-
     @PostMapping("/crear/validando")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<?> save(@RequestBody Account entity) {
         try {
-            //Boolean registered=restTemplate.getForObject("http://127.0.0.1:8091/api/v1/clientes/existe/"+entity.getCustomerId(), Boolean.class);
             boolean registered=accountService.saveValidation(entity);
             if (registered) {
                 return new ResponseEntity<>("Registro exitoso", HttpStatus.CREATED);
