@@ -1,6 +1,7 @@
 package com.microservice.account.controllers;
 
 import com.microservice.account.controllers.base.BaseControllerImpl;
+import com.microservice.account.dto.MovementDTO;
 import com.microservice.account.dto.projections.MovementPrj;
 import com.microservice.account.entities.Account;
 import com.microservice.account.entities.Movement;
@@ -12,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -26,30 +28,33 @@ public class MovementController extends BaseControllerImpl<Movement, MovementSer
     @PostMapping("/crear/validando")
     @ResponseStatus(HttpStatus.CREATED)
     @Transactional
-    public ResponseEntity<?> save(@RequestBody Movement entity) {
+    public ResponseEntity<?> save(@RequestBody MovementDTO entity) {
         try {
+            Movement entityNew= new Movement();
+            entityNew.setMovementDate(entity.getMovementDate());
+            entityNew.setMovementValue(entity.getMovementValue());
             Double movementValue = entity.getMovementValue();
-            Account account =null;
+            Account account = null;
             try {
-                 account = accountService.finById(entity.getAccount().getId());
+                 account = accountService.findByAccountNumber(entity.getAccountNumber());
                 if(account!=null){
-                    entity.setAccount(account);
+                    entityNew.setAccount(account);
                     boolean isZeroOrNull = movementValue == null || movementValue.equals(0.0);
                     if (!isZeroOrNull) {
                         Double finalBalance =account.getAccountInitialBalance();
                         if (movementValue > 0) {
-                            entity.setMovementType("Desposito");
+                            entityNew.setMovementType("Desposito");
                             finalBalance+=entity.getMovementValue();
                         } else {
-                            entity.setMovementType("Retiro");
+                            entityNew.setMovementType("Retiro");
                             finalBalance+=entity.getMovementValue();
                             if(finalBalance<0){
                                 return new ResponseEntity<>("Su saldo actual no permite el retiro, usted cuenta con $"+account.getAccountInitialBalance(), HttpStatus.INTERNAL_SERVER_ERROR);
                             }
                         }
                         account.setAccountInitialBalance(finalBalance);
-                        //aqui hay que mejorar a una transacciòn
-                        movementService.save(entity);
+                        entityNew.setMovementBalance(finalBalance);
+                        movementService.save(entityNew);
                         accountService.update(account.getId(),account);
                         return new ResponseEntity<>("Registro exitoso", HttpStatus.CREATED);
                     } else {

@@ -9,6 +9,7 @@ import lombok.Lombok;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -22,5 +23,9 @@ public class MovementService extends BaseServiceImpl<Movement, Long> {
 
     public List<MovementPrj> findAllProjectedBy() {
         return movementRepository.findAllProjectedBy();
+    }
+
+    public List<MovementPrj> findAllProjectedByAccountIdAndMovementDateBetween(Long id, Date minDate, Date maxDate) {
+        return movementRepository.findAllProjectedByAccountIdAndMovementDateBetween(id, minDate, maxDate);
     }
 }

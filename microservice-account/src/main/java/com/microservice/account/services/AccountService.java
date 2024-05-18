@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.List;
+
 @Service
 public class AccountService extends BaseServiceImpl<Account, Long> {
     @Autowired
@@ -34,6 +36,10 @@ public class AccountService extends BaseServiceImpl<Account, Long> {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public Account findByAccountNumber(String accountNumber) {
+        return accountRepository.findByAccountNumber(accountNumber);
     }
 
 }
