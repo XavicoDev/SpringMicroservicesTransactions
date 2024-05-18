@@ -13,6 +13,9 @@ import java.util.Date;
 @AllArgsConstructor
 @Table(name = "movement")
 public class Movement extends Base {
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Account account;
     @Column(name = "movement_date", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date movementDate;

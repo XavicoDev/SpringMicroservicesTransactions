@@ -13,6 +13,9 @@ import org.antlr.v4.runtime.misc.NotNull;
 @AllArgsConstructor
 @Table(name = "account")
 public class Account extends Base {
+
+    @Column(name = "customer_id", nullable = false)
+    private Long customerId;
     @Column(name = "account_number",unique = true,nullable = false)
     private String accountNumber;
     @Column(name = "account_type",nullable = false)

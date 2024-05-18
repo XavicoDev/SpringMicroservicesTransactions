@@ -16,10 +16,10 @@ public abstract class BaseControllerImpl<E extends Base, S extends BaseServiceIm
     public ResponseEntity<?> save(@RequestBody E entity) {
         try {
             service.save(entity);
+            return new ResponseEntity<>("Registro exitoso", HttpStatus.CREATED);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            return new ResponseEntity<>("Registro fallido: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return null;
     }
 
     @GetMapping("/all")
