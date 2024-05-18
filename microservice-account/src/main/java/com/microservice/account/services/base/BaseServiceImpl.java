@@ -1,7 +1,7 @@
-package com.microservice.customer.services;
+package com.microservice.account.services.base;
 
-import com.microservice.customer.dto.Base;
-import com.microservice.customer.repositories.BaseRepository;
+import com.microservice.account.dto.Base;
+import com.microservice.account.repositories.base.BaseRepository;
 
 import java.io.Serializable;
 import java.util.List;

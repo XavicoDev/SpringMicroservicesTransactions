@@ -13,11 +13,8 @@ import lombok.*;
 @AllArgsConstructor
 @Table(name = "customer")
 public class Customer  extends Person {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private String password;
-    private String status;
+    @Column(name = "customer_password",unique = true,nullable = false)
+    private String customerPassword;
+    @Column(name = "customer_status",unique = true,nullable = false)
+    private String customerStatus;
 }

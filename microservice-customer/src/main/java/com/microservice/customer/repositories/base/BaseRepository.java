@@ -1,4 +1,4 @@
-package com.microservice.customer.repositories;
+package com.microservice.customer.repositories.base;
 
 import com.microservice.customer.dto.Base;
 import org.springframework.data.jpa.repository.JpaRepository;
