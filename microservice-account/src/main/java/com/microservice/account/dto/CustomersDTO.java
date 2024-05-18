@@ -12,10 +12,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CustomersDTO {
     private Long id;
-    private String personName;
-    private String personGender;
-    private int personAge;
+    private String customerPassword;
     private String personIdentification;
+    private String customerStatus;
     private String personAddress;
     private String personPhone;
+    private String personGender;
+    private int personAge;
+    private String personName;
 }

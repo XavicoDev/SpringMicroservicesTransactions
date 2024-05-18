@@ -10,4 +10,6 @@ import java.util.List;
 @Repository
 public interface AccountRepository extends BaseRepository<Account, Long> {
     Account findByAccountNumber(String accountId);
+
+    List<Account> findAllByCustomerId(Long id);
 }

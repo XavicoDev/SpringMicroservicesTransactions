@@ -1,13 +1,11 @@
 package com.microservice.account.controllers;
 
-import com.microservice.account.clients.CustomersClient;
 import com.microservice.account.controllers.base.BaseControllerImpl;
 import com.microservice.account.dto.AccountMovementDTO;
 import com.microservice.account.dto.CustomersDTO;
-import com.microservice.account.dto.MovementDetailDTO;
+import com.microservice.account.dto.ReportDTO;
 import com.microservice.account.dto.projections.MovementPrj;
 import com.microservice.account.entities.Account;
-import com.microservice.account.repositories.AccountRepository;
 import com.microservice.account.services.AccountService;
 import com.microservice.account.services.MovementService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -28,6 +27,7 @@ public class AccountController extends BaseControllerImpl<Account, AccountServic
     private AccountService accountService;
     @Autowired
     private MovementService movementService;
+
 
     @PostMapping("/crear/validando")
     @ResponseStatus(HttpStatus.CREATED)
@@ -45,23 +45,32 @@ public class AccountController extends BaseControllerImpl<Account, AccountServic
     }
 
     @GetMapping("/reporte")
-    public ResponseEntity<?> generateStateAccountReport(@RequestParam @DateTimeFormat(pattern="yyyy-MM-dd") Date minData,
+    public ResponseEntity<ReportDTO> generateStateAccountReport(@RequestParam @DateTimeFormat(pattern="yyyy-MM-dd") Date minData,
                                                         @RequestParam @DateTimeFormat(pattern="yyyy-MM-dd") Date maxData,
-                                                        @RequestParam Long accountId){
+                                                        @RequestParam String personIdentification){
         try {
-            AccountMovementDTO accountMovementDTO= new AccountMovementDTO();
-            Account account= accountService.finById(accountId);
-            if(account!=null){
+            ReportDTO reportDTO = new ReportDTO();
+
+            //AccountMovementDTO accountMovementDTO= new AccountMovementDTO();
+            CustomersDTO customers= accountService.getOneCustomerPrj(personIdentification);
+            reportDTO.setIdentification(customers.getPersonIdentification());
+            reportDTO.setPersonName(customers.getPersonName());
+
+            List<AccountMovementDTO> accountMovementList= new ArrayList<>();
+
+            List<Account> accountList= accountService.findAllByCustomerId(customers.getId());
+
+            for (Account account : accountList) {
+                AccountMovementDTO accountMovementDTO= new AccountMovementDTO();
                 List<MovementPrj> projectedMovements =
-                        movementService.findAllProjectedByAccountIdAndMovementDateBetween(accountId,minData,maxData);
+                        movementService.findAllProjectedByAccountIdAndMovementDateBetween(account.getId(),minData,maxData);
                 accountMovementDTO.setAccountNumber(account.getAccountNumber());
                 accountMovementDTO.setAccountBalance(account.getAccountInitialBalance());
                 accountMovementDTO.setMovementList(projectedMovements);
-                return new ResponseEntity<>(accountMovementDTO, HttpStatus.OK);
+                accountMovementList.add(accountMovementDTO);
             }
-            else{
-                return new ResponseEntity<>(accountMovementDTO, HttpStatus.BAD_REQUEST);
-            }
+            reportDTO.setAccountMovementList(accountMovementList);
+            return new ResponseEntity<>(reportDTO, HttpStatus.OK);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

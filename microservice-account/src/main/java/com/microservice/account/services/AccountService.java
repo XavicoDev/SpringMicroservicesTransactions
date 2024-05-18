@@ -38,8 +38,19 @@ public class AccountService extends BaseServiceImpl<Account, Long> {
         }
     }
 
+    public CustomersDTO getOneCustomerPrj(String id) {
+        try {
+            return customersClient.getOnePrj(id);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
     public Account findByAccountNumber(String accountNumber) {
         return accountRepository.findByAccountNumber(accountNumber);
+    }
+    public List<Account> findAllByCustomerId(Long id) {
+        return accountRepository.findAllByCustomerId(id);
     }
 
 }
