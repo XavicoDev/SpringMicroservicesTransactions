@@ -11,7 +11,7 @@ public abstract class BaseControllerImpl<E extends Base, S extends BaseServiceIm
     @Autowired
     protected S service;
 
-    @PostMapping("/create")
+    @PostMapping("/crear")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<?> save(@RequestBody E entity) {
         try {
@@ -22,15 +22,24 @@ public abstract class BaseControllerImpl<E extends Base, S extends BaseServiceIm
         }
     }
 
-    @GetMapping("/all")
+    @GetMapping("/lista")
     public ResponseEntity<?> getAll() throws Exception {
         return ResponseEntity.ok(service.findAll());
     }
 
-    @GetMapping("/search/{id}")
+    @GetMapping("/buscar/{id}")
     public ResponseEntity<?> getOne(@PathVariable Long id) {
         try {
             return ResponseEntity.ok(service.finById(id));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @GetMapping("/existe/{id}")
+    public ResponseEntity<?> getExists(@PathVariable Long id) {
+        try {
+            return ResponseEntity.ok(service.existsById(id));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

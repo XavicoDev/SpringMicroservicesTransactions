@@ -12,7 +12,6 @@ public interface BaseController <E extends Base, ID extends Serializable> {
     public ResponseEntity<?> getOne(@PathVariable ID id) throws Exception;
     public ResponseEntity<?> save(@RequestBody E entity) throws Exception;
     public ResponseEntity<?> update(@PathVariable ID id,@RequestBody E entity);
-    public ResponseEntity<?> updatePartial(@PathVariable ID id,@RequestBody E entity);
     public ResponseEntity<?> delete(@PathVariable ID id);
 
 

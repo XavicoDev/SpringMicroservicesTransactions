@@ -27,6 +27,11 @@ public abstract class BaseServiceImpl<E extends Base, ID extends Serializable> i
     }
 
     @Override
+    public boolean existsById(ID id) throws Exception {
+        return baseRepository.existsById(id);
+    }
+
+    @Override
     public E save(E entity) throws Exception {
         entity=baseRepository.save(entity);
         return entity;

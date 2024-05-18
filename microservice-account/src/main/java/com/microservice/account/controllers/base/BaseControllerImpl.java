@@ -11,23 +11,23 @@ public abstract class BaseControllerImpl<E extends Base, S extends BaseServiceIm
     @Autowired
     protected S service;
 
-    @PostMapping("/create")
+    @PostMapping("/crear")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<?> save(@RequestBody E entity) {
         try {
             service.save(entity);
+            return new ResponseEntity<>("Registro exitoso", HttpStatus.CREATED);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            return new ResponseEntity<>("Registro fallido: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return null;
     }
 
-    @GetMapping("/all")
+    @GetMapping("/lista")
     public ResponseEntity<?> getAll() throws Exception {
         return ResponseEntity.ok(service.findAll());
     }
 
-    @GetMapping("/search/{id}")
+    @GetMapping("/buscar/{id}")
     public ResponseEntity<?> getOne(@PathVariable Long id) {
         try {
             return ResponseEntity.ok(service.finById(id));
