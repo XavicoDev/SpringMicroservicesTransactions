@@ -28,4 +28,7 @@ public class MovementService extends BaseServiceImpl<Movement, Long> {
     public List<MovementPrj> findAllProjectedByAccountIdAndMovementDateBetween(Long id, Date minDate, Date maxDate) {
         return movementRepository.findAllProjectedByAccountIdAndMovementDateBetween(id, minDate, maxDate);
     }
+    public List<MovementPrj> findAllProjectedByAccountCustomerIdAndMovementDateBetween(Long id, Date minDate, Date maxDate) {
+        return movementRepository.findAllProjectedByAccountCustomerIdAndMovementDateBetween(id, minDate, maxDate);
+    }
 }

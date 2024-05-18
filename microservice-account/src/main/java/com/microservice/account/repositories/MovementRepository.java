@@ -11,4 +11,5 @@ public interface MovementRepository extends BaseRepository<Movement, Long> {
 
     List<MovementPrj> findAllProjectedBy();
     List<MovementPrj> findAllProjectedByAccountIdAndMovementDateBetween(Long id, Date minDate, Date maxDate);
+    List<MovementPrj> findAllProjectedByAccountCustomerIdAndMovementDateBetween(Long id, Date minDate, Date maxDate);
 }

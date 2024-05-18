@@ -2,12 +2,14 @@ package com.microservice.account.controllers;
 
 import com.microservice.account.controllers.base.BaseControllerImpl;
 import com.microservice.account.dto.MovementDTO;
+import com.microservice.account.dto.ReportDTO;
 import com.microservice.account.dto.projections.MovementPrj;
 import com.microservice.account.entities.Account;
 import com.microservice.account.entities.Movement;
 import com.microservice.account.services.AccountService;
 import com.microservice.account.services.MovementService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -76,5 +78,14 @@ public class MovementController extends BaseControllerImpl<Movement, MovementSer
     public ResponseEntity<List<MovementPrj>> getAllMovementsProjected() {
         List<MovementPrj> projectedMovements = movementService.findAllProjectedBy();
         return new ResponseEntity<>(projectedMovements, HttpStatus.OK);
+    }
+
+    @GetMapping("/reporte")
+    public ResponseEntity<List<MovementPrj>> generateStateAccountsReport(@RequestParam @DateTimeFormat(pattern="yyyy-MM-dd") Date minData,
+                                                                @RequestParam @DateTimeFormat(pattern="yyyy-MM-dd") Date maxData,
+                                                                @RequestParam Long customerId){
+        List<MovementPrj> projectedMovements = movementService.findAllProjectedByAccountCustomerIdAndMovementDateBetween(customerId, minData, maxData);
+        return new ResponseEntity<>(projectedMovements, HttpStatus.OK);
+
     }
 }

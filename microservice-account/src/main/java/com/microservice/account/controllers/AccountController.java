@@ -69,7 +69,7 @@ public class AccountController extends BaseControllerImpl<Account, AccountServic
                 accountMovementDTO.setMovementList(projectedMovements);
                 accountMovementList.add(accountMovementDTO);
             }
-            reportDTO.setAccountMovementList(accountMovementList);
+            reportDTO.setAccountList(accountMovementList);
             return new ResponseEntity<>(reportDTO, HttpStatus.OK);
         } catch (Exception e) {
             throw new RuntimeException(e);

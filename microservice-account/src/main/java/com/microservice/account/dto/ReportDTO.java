@@ -14,5 +14,5 @@ public class ReportDTO {
 
     private String identification;
     private String personName;
-    private List<AccountMovementDTO> accountMovementList;
+    private List<AccountMovementDTO> accountList;
 }
