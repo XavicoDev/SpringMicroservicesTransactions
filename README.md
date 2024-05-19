@@ -26,7 +26,7 @@ El proyecto está dividido en varios módulos:
 git clone https://github.com/XavicoDev/SpringMicroservicesTransactions.git
 ```
 2. Crear las base de datos customerDB y accountDB en PostgreSQL 
-2. Configure la conexión a PostgreSQL en el archivo `application.yml` de cada microservicio. Puede encontrar esta configuración en el subdirectorio `resources` del microservicio `microservice-config`.
+2. Configure la conexión a PostgreSQL en los archivos `ms-account.yml` y `ms-customer.yml` de cada microservicio. Puede encontrar estas configuraciones en el subdirectorio `resources` del microservicio `microservice-config`.
 3. Ejecuta cada microservicio individualmente, se recomienda el siguienrte orden:
 - microservice-config
 - microservice-eureka
