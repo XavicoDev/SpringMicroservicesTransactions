@@ -31,7 +31,7 @@ class AccountServiceTest {
 
     @Test
     public void testFindAllByCustomerId() {
-        
+
         Long customerId = 123L;
         List<Account> mockAccounts = new ArrayList<>();
         mockAccounts.add(new Account(customerId, "123456", "Checking", 1000.0, true));

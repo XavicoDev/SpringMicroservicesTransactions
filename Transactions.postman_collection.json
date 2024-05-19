@@ -1,0 +1,659 @@
+{
+	"info": {
+		"_postman_id": "1dafe170-135f-4d97-bfcd-9fd45c1f657a",
+		"name": "Transactions",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11923877"
+	},
+	"item": [
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "Cosultar lista completa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8091/api/v1/clientes/lista",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"v1",
+								"clientes",
+								"lista"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consulta proj por identificacion",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8091/api/v1/clientes/proyectada/123456789",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"v1",
+								"clientes",
+								"proyectada",
+								"123456789"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registro de pruebas 1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"personName\": \"John Doe\",\r\n    \"personGender\": \"Male\",\r\n    \"personAge\": 30,\r\n    \"personIdentification\": \"123456789\",\r\n    \"personAddress\": \"123 Main Street\",\r\n    \"personPhone\": \"555-1234\",\r\n    \"customerPassword\": \"securepassword\",\r\n    \"customerStatus\": \"active\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8091/api/v1/clientes/crear",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"v1",
+								"clientes",
+								"crear"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registro de pruebas 2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"personName\": \"Jane Smith\",\r\n        \"personGender\": \"Female\",\r\n        \"personAge\": 28,\r\n        \"personIdentification\": \"987654321\",\r\n        \"personAddress\": \"456 Elm Street\",\r\n        \"personPhone\": \"555-5678\",\r\n        \"customerPassword\": \"mypassword\",\r\n        \"customerStatus\": \"inactive\"\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8091/api/v1/clientes/crear",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"v1",
+								"clientes",
+								"crear"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar registro",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1,\r\n    \"personName\": \"John Doe2\",\r\n    \"personGender\": \"Male\",\r\n    \"personAge\": 30,\r\n    \"personIdentification\": \"123456789\",\r\n    \"personAddress\": \"123 Main Street\",\r\n    \"personPhone\": \"555-1234\",\r\n    \"customerPassword\": \"securepassword\",\r\n    \"customerStatus\": \"active\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8091/api/v1/clientes/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"v1",
+								"clientes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar registro",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"personName\": \"Jane Smith\",\r\n        \"personGender\": \"Female\",\r\n        \"personAge\": 28,\r\n        \"personIdentification\": \"987654321\",\r\n        \"personAddress\": \"456 Elm Street\",\r\n        \"personPhone\": \"555-5678\",\r\n        \"customerPassword\": \"mypassword\",\r\n        \"customerStatus\": \"inactive\"\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8091/api/v1/clientes/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"v1",
+								"clientes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validar si existe el id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"personName\": \"Jane Smith\",\r\n        \"personGender\": \"Female\",\r\n        \"personAge\": 28,\r\n        \"personIdentification\": \"987654321\",\r\n        \"personAddress\": \"456 Elm Street\",\r\n        \"personPhone\": \"555-5678\",\r\n        \"customerPassword\": \"mypassword\",\r\n        \"customerStatus\": \"inactive\"\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8091/api/v1/clientes/existe/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"v1",
+								"clientes",
+								"existe",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cuentas",
+			"item": [
+				{
+					"name": "Cosultar lista completa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8092/api/v1/cuentas/lista",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8092",
+							"path": [
+								"api",
+								"v1",
+								"cuentas",
+								"lista"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registro de prueba 1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customerId\": 1,\r\n    \"accountNumber\": \"1234567890\",\r\n    \"accountType\": \"Ahorro\",\r\n    \"accountInitialBalance\": 1000.0,\r\n    \"accountStatus\": true\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8092/api/v1/cuentas/crear/validando",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8092",
+							"path": [
+								"api",
+								"v1",
+								"cuentas",
+								"crear",
+								"validando"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registro de prueba 2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customerId\": 2,\r\n    \"accountNumber\": \"1234567892\",\r\n    \"accountType\": \"Ahorro\",\r\n    \"accountInitialBalance\": 1000.0,\r\n    \"accountStatus\": true\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8092/api/v1/cuentas/crear/validando",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8092",
+							"path": [
+								"api",
+								"v1",
+								"cuentas",
+								"crear",
+								"validando"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1,\r\n    \"customerId\": 1,\r\n    \"accountNumber\": \"1234567890\",\r\n    \"accountType\": \"Ahorro\",\r\n    \"accountInitialBalance\": 220.20,\r\n    \"accountStatus\": true\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8092/api/v1/cuentas/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8092",
+							"path": [
+								"api",
+								"v1",
+								"cuentas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar registro",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"personName\": \"Jane Smith\",\r\n        \"personGender\": \"Female\",\r\n        \"personAge\": 28,\r\n        \"personIdentification\": \"987654321\",\r\n        \"personAddress\": \"456 Elm Street\",\r\n        \"personPhone\": \"555-5678\",\r\n        \"customerPassword\": \"mypassword\",\r\n        \"customerStatus\": \"inactive\"\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8091/api/v1/cliente/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8091",
+							"path": [
+								"api",
+								"v1",
+								"cliente",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Movimientos",
+			"item": [
+				{
+					"name": "Cosultar lista completa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8092/api/v1/movimientos/consulta/proyectada",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8092",
+							"path": [
+								"api",
+								"v1",
+								"movimientos",
+								"consulta",
+								"proyectada"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registro de prueba 1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"account\": {\r\n        \"id\": 1\r\n    },\r\n    \"movementDate\": \"2024-05-20T10:30:00\",\r\n    \"movementType\": \"Deposito\",\r\n    \"movementValue\": 100.0,\r\n    \"movementBalance\": 1100.0\r\n}\r\n\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8092/api/v1/movimientos/crear/validando",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8092",
+							"path": [
+								"api",
+								"v1",
+								"movimientos",
+								"crear",
+								"validando"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Registro de prueba 2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"account\": {\r\n        \"id\": 2\r\n    },\r\n    \"movementDate\": \"2024-05-20T10:30:00\",\r\n    \"movementType\": \"Retiro\",\r\n    \"movementValue\": 100.0,\r\n    \"movementBalance\": 1100.0\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8092/api/v1/movimientos/crear",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8092",
+							"path": [
+								"api",
+								"v1",
+								"movimientos",
+								"crear"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"id\":1,\r\n    \"accountId\": 1,\r\n    \"movementDate\": \"2024-05-20T10:30:00\",\r\n    \"movementType\": \"Deposito\",\r\n    \"movementValue\": 100.0,\r\n    \"movementBalance\": 1100.0\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8092/api/v1/movimientos/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8092",
+							"path": [
+								"api",
+								"v1",
+								"movimientos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar registro",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"personName\": \"Jane Smith\",\r\n        \"personGender\": \"Female\",\r\n        \"personAge\": 28,\r\n        \"personIdentification\": \"987654321\",\r\n        \"personAddress\": \"456 Elm Street\",\r\n        \"personPhone\": \"555-5678\",\r\n        \"customerPassword\": \"mypassword\",\r\n        \"customerStatus\": \"inactive\"\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8092/api/v1/movimientos/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8092",
+							"path": [
+								"api",
+								"v1",
+								"movimientos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reportes",
+			"item": [
+				{
+					"name": "Reporte de movimientos  por cliente json",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8092/api/v1/cuentas/reporte?minData=2024-05-04&maxData=2024-06-01&personIdentification=123456789",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8092",
+							"path": [
+								"api",
+								"v1",
+								"cuentas",
+								"reporte"
+							],
+							"query": [
+								{
+									"key": "minData",
+									"value": "2024-05-04"
+								},
+								{
+									"key": "maxData",
+									"value": "2024-06-01"
+								},
+								{
+									"key": "personIdentification",
+									"value": "123456789"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reporte de movimientos  por cliente table",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8092/api/v1/movimientos/reporte?minData=2024-05-04&maxData=2024-06-01&customerId=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8092",
+							"path": [
+								"api",
+								"v1",
+								"movimientos",
+								"reporte"
+							],
+							"query": [
+								{
+									"key": "minData",
+									"value": "2024-05-04"
+								},
+								{
+									"key": "maxData",
+									"value": "2024-06-01"
+								},
+								{
+									"key": "customerId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
