@@ -18,6 +18,7 @@ El proyecto está dividido en varios módulos:
 - **Versionamiento:** de Spring Boot: La aplicación está construida con la versión 3.2.5 del spring-boot-starter-parent.
 - **Proyecciones:** Se implementan proyecciones para consultar y manipular datos de manera eficiente.
 - **Código reutilizable:** El proyecto promueve la reutilización de código mediante la definición de interfaces estándar de CRUD para los repositorios, servicios y controladores. A continuación se muestra un ejemplo de implementación de estas interfaces:
+- **Prueba unitaria:** Usando Mockito, se generó una prueba unitaria para el microservice-account. La prueba se encuentra en AccountServiceTest y está diseñada para el servicio findAllByCustomerId. Este es un ejemplo de cómo se pueden implementar pruebas unitarias en todos los servicios.
 
 ## ¿ Cómo empezar ?
 
