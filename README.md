@@ -23,7 +23,7 @@ El proyecto está dividido en varios módulos:
 
 1. Clona el repositorio:
 ```
-git clone https://github.com/tu-repositorio/proyecto-microservicios.git
+git clone https://github.com/XavicoDev/SpringMicroservicesTransactions.git
 ```
 2. Crear las base de datos customerDB y accountDB en PostgreSQL 
 2. Configura la base de datos PostgreSQL en el archivo application.yml de cada microservicio.
